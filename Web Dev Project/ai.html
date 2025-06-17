@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trivia Game</title>
+    <link rel="stylesheet" href="mystyles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        .navigation {
+            text-align: left;
+            padding-top: 0;
+            margin: 0;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+        }
+        
+        .options {
+            list-style-type: none;
+            padding: 0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .options button:hover {
+            background-color: darkolivegreen;
+        }
+        
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body style="
+  margin: 0;
+  height: 100vh;
+  background-image: url('/assets/img/portfolio/fullsize/\'merca.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+">
+    </body>
+
+
+
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="traveling.html">Traveling</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ai.html">Game</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>US Capitals Trivia Game</h1>
+        <div class="question"></div>
+        <ul class="options"></ul>
+        <div class="feedback"></div>
+    </div>
+
+    <script>
+        const statesAndCapitals = {
+            "Alabama": "Montgomery",
+            "Alaska": "Juneau",
+            "Arizona": "Phoenix",
+            "Arkansas": "Little Rock",
+            "California": "Sacramento",
+            "Colorado": "Denver",
+            "Connecticut": "Hartford",
+            "Delaware": "Dover",
+            "Florida": "Tallahassee",
+            "Georgia": "Atlanta",
+            "Hawaii": "Honolulu",
+            "Idaho": "Boise",
+            "Illinois": "Springfield",
+            "Indiana": "Indianapolis",
+            "Iowa": "Des Moines",
+            "Kansas": "Topeka",
+            "Kentucky": "Frankfort",
+            "Louisiana": "Baton Rouge",
+            "Maine": "Augusta",
+            "Maryland": "Annapolis",
+            "Montana": "Helena",
+            "Nebraska": "Lincoln",
+            "Nevada": "Carson City",
+            "New Hampshire": "Concord",
+            "New Jersey": "Trenton",
+            "New Mexico": "Santa Fe",
+            "New York": "Albany",
+            "North Carolina": "Raleigh",
+            "North Dakota": "Bismarck",
+            "Ohio": "Columbus",
+            "Oklahoma": "Oklahoma City",
+            "Oregon": "Salem",
+            "Pennsylvania": "Harrisburg",
+            "Rhode Island": "Providence",
+            "South Carolina": "Columbia",
+            "South Dakota": "Pierre",
+            "Tennessee": "Nashville",
+            "Texas": "Austin",
+            "Utah": "Salt Lake City",
+            "Vermont": "Montpelier",
+            "Virginia": "Richmond",
+            "Washington": "Olympia",
+            "West Virginia": "Charleston",
+            "Wisconsin": "Madison",
+            "Wyoming": "Cheyenne"
+        };
+
+        function getRandomState() {
+            const states = Object.keys(statesAndCapitals);
+            return states[Math.floor(Math.random() * states.length)];
+        }
+
+        function displayQuestion() {
+            const state = getRandomState();
+            const correctCapital = statesAndCapitals[state];
+            const allCapitals = Object.values(statesAndCapitals);
+            let options = [correctCapital];
+
+            while (options.length < 4) {
+                const randomCapital = allCapitals[Math.floor(Math.random() * allCapitals.length)];
+                if (!options.includes(randomCapital)) {
+                    options.push(randomCapital);
+                }
+            }
+
+            options = options.sort(() => Math.random() - 0.5);
+
+            document.querySelector('.question').innerText = `What is the capital of ${state}?`;
+            const optionsList = document.querySelector('.options');
+            optionsList.innerHTML = '';
+            options.forEach(option => {
+                const li = document.createElement('li');
+                const button = document.createElement('button');
+                button.innerText = option;
+                button.onclick = () => checkAnswer(option, correctCapital);
+                li.appendChild(button);
+                optionsList.appendChild(li);
+            });
+        }
+
+        function checkAnswer(selected, correct) {
+            const feedback = document.querySelector('.feedback');
+            if (selected === correct) {
+                feedback.innerText = 'Correct!';
+                feedback.style.color = 'green';
+            } else {
+                feedback.innerText = `Wrong! The correct answer is ${correct}.`;
+                feedback.style.color = 'red';
+            }
+            setTimeout(() => {
+                feedback.innerText = '';
+                displayQuestion();
+            }, 2000);
+        }
+
+        displayQuestion();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+        .navigation {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .travel-header {
+            background-image: url(../assets/img/pine.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 4rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .location {
+            margin-bottom: 40px;
+            padding: 50px;
+            background-color: #fff;
+            border: 1px solid #ccc
+        }
+        
+        .location h2 {
+            margin-top: 0;
+        }
+        
+        .when {
+            font-style: italic;
+        }
+        
+        .activities {
+            margin-left: 20px;
+        }
+        
+        .image img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-top: 10px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        .video {
+            margin: 40px auto;
+            border: 1px solid #ccc;
+            padding-left: 20px;
+        }
+        
+        .tableau {
+            margin: 40px auto;
+            max-width: 1000px;
+            padding: 20px;
+            border: 1px solid #ccc
+        }
+        
+        h1 {
+            font-size: x-large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: darkolivegreen;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        h3 {
+            font-size: large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 100;
+        }
+        
+        h6 {
+            font-size: large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 100;
+            color: gray;
+        }
+        
+        ol {
+            font-size: large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+        }
+        
+        ul {
+            font-weight: 100;
+        }
